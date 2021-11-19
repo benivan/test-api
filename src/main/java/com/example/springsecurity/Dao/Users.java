@@ -1,15 +1,17 @@
 package com.example.springsecurity.Dao;
 
 
+import com.example.springsecurity.Dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Users {
@@ -22,6 +24,19 @@ public class Users {
     private String email;
     private String password;
     private String contact;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Post> posts = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Comment> userComments = new ArrayList<>();
+
+    public Users(UserDto userDto){
+        this.userName = userDto.getUserName();
+        this.firstName = userDto.getFirstName();
+        this.lastName = userDto.getLastName();
+        this.email =  userDto.getEmail();
+        this.password = userDto.getPassword();
+        this.contact = userDto.getContact();
+    }
 }
