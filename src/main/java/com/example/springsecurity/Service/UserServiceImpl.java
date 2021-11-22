@@ -6,10 +6,13 @@ import com.example.springsecurity.Repo.RoleRepo;
 import com.example.springsecurity.Repo.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -18,8 +21,21 @@ public class UserServiceImpl implements UserService{
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
     @Override
+
     public Users saveUser(Users user) {
-       return userRepo.save(user);
+
+//            if (!checkUserNameTaken(user.getUserName())){
+//
+//            }
+
+
+        return userRepo.save(user);
+
+    }
+
+    private Boolean checkUserNameTaken(String userName){
+        val usersByUserName = userRepo.findUsersByUserName(userName);
+        return  (Objects.equals(usersByUserName.getUserName(), userName));
     }
 
     @Override
