@@ -4,6 +4,7 @@ import com.example.springsecurity.Dao.Role;
 import com.example.springsecurity.Dao.Users;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface UserService {
