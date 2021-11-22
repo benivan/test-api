@@ -15,6 +15,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDateTime commentTime;
+    private String body;
     @ManyToOne
     private Users users;
+//    @ManyToOne
+//    private Post post;
 }
