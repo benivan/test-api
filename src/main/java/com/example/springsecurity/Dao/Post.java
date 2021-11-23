@@ -19,7 +19,6 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String screamId;
     private String body;
     private String userHandle;
     private String mediaUrl ;
