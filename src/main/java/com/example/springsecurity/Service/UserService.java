@@ -2,6 +2,7 @@ package com.example.springsecurity.Service;
 
 import com.example.springsecurity.Dao.Role;
 import com.example.springsecurity.Dao.Users;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Set;
@@ -13,7 +14,7 @@ public interface UserService {
 
     Role saveRole(Role role);
 
-    void addRoleToUser(String userName, String roleName);
+    ResponseEntity<?> addRoleToUser(String userName, String roleName);
 
     Users getUser(String userName);
 
