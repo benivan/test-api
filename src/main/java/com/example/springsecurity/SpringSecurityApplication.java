@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.beans.BeanProperty;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
@@ -29,22 +30,24 @@ public class SpringSecurityApplication {
             userService.saveRole(new Role(null,"ROLE_ADMIN"));
             userService.saveRole(new Role(null,"ROLE_SUPER_ADMIN"));
 
-            userService.saveUser(new Users(
-                    null,
-                    "userName",
-                    "FirstName",
-                    "LastName",
-                    "something@gmail.com",
-                    "123456",
-                    "contact",
-                    Collections.emptySet()
-            ));
+//            userService.saveUser(new Users(
+//                    null,
+//                    "username",
+//                    "FirstName",
+//                    "LastName",
+//                    "something@gmail.com",
+//                    "123456",
+//                    "contact",
+//                    Collections.EMPTY_SET,
+//                    Collections.EMPTY_LIST,
+//                    Collections.EMPTY_LIST
+//            ));
 
 
-//            userService.saveUser(new Users(new UserDto("username1", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
-//            )));
-//            userService.saveUser(new Users(new UserDto("username1", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
-//            )));
+            userService.saveUser(new Users(new UserDto("username", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
+            )));
+            userService.saveUser(new Users(new UserDto("username1", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
+            )));
 
             userService.addRoleToUser("username","ROLE_USER");
             userService.addRoleToUser("username","ROLE_MODERATOR");
