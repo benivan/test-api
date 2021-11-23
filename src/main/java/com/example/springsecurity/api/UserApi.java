@@ -34,7 +34,7 @@ public class UserApi {
         return ResponseEntity.ok().body(userService.getUser(username));
     }
 
-    @PostMapping("/user/addrole")
+    @PostMapping("/user/add/role")
     public ResponseEntity<?> addRoleToUser(@RequestBody RoleToUserForm form){
         userService.addRoleToUser(form.getUserName(),form.getRole());
         return ResponseEntity.ok().build();
