@@ -1,13 +1,12 @@
 package com.example.springsecurity.Dao;
 
 
+import com.example.springsecurity.Dto.UserDto;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
@@ -25,18 +24,21 @@ public class Users {
     private String contact;
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Post> posts = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Comment> userComments = new ArrayList<>();
 
 
 
-
-//    public Users(UserDto userDto){
-//        this.userName = userDto.getUserName();
-//        this.firstName = userDto.getFirstName();
-//        this.lastName = userDto.getLastName();
-//        this.email =  userDto.getEmail();
-//        this.password = userDto.getPassword();
-//        this.contact = userDto.getContact();
-//    }
+    public Users(UserDto userDto){
+        this.userName = userDto.getUserName();
+        this.firstName = userDto.getFirstName();
+        this.lastName = userDto.getLastName();
+        this.email =  userDto.getEmail();
+        this.password = userDto.getPassword();
+        this.contact = userDto.getContact();
+    }
 
 
 }
