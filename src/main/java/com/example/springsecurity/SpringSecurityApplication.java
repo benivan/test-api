@@ -34,7 +34,7 @@ public class SpringSecurityApplication {
 //                    null,
 //                    "username",
 //                    "FirstName",
-//                    "LastName",
+//                    "LastNam
 //                    "something@gmail.com",
 //                    "123456",
 //                    "contact",
