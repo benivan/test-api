@@ -1,10 +1,16 @@
 FROM openjdk:16
 WORKDIR /app
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
+#COPY .mvn/ .mvn
+#COPY mvnw pom.xml ./
+#RUN ./mvnw dependency:go-offline
+#
+#COPY src ./src
 
-COPY src ./src
+COPY . .
 
-CMD ["./mvnw", "spring-boot:run"]
+RUN ./mvnw package
+
+RUN cd target
+
+CMD ["java","-jar" ,"security.jar"]
