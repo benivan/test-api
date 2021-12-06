@@ -4,6 +4,7 @@ import com.example.springsecurity.Dao.Role;
 import com.example.springsecurity.Dao.Users;
 import com.example.springsecurity.Service.UserService;
 import com.example.springsecurity.utlil.RoleToUserForm;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserApi {
     private final UserService userService;
+
+    @GetMapping("/hello")
+    public ResponseEntity<?> helloWorld(){
+        return ResponseEntity.ok().body("Hello World");
+    }
+
 
     @GetMapping("/allUsers")
     public ResponseEntity<List<Users>> getAllUser() {
