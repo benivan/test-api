@@ -1,5 +1,6 @@
 FROM openjdk:16
-WORKDIR /app
+WORKDIR /spring-security
+
 
 #COPY .mvn/ .mvn
 #COPY mvnw pom.xml ./
@@ -9,8 +10,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN ./mvnw package
+#RUN ./mvnw package
+#
+#RUN cd target
 
-RUN cd target
-
-CMD ["java","-jar" ,"security.jar"]
+ENTRYPOINT ["java","-jar" ,"target/security.jar"]
