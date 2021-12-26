@@ -11,12 +11,12 @@ import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/role")
 public class RoleApi {
 
     private final UserService userService;
 
-    @PostMapping("/role/save")
+    @PostMapping("/save")
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/role/save").toString());
         return ResponseEntity.created(uri).body(userService.saveRole(role));
