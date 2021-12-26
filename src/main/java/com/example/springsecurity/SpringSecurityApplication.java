@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.beans.BeanProperty;
 import java.util.Collections;
@@ -21,38 +23,45 @@ public class SpringSecurityApplication {
         SpringApplication.run(SpringSecurityApplication.class, args);
     }
 
-//    @Bean
-//    CommandLineRunner run(UserService userService) {
-//        return args -> {
-//            userService.saveRole(new Role(null,"ROLE_USER"));
-//            userService.saveRole(new Role(null,"ROLE_MODERATOR"));
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    CommandLineRunner run(UserService userService) {
+        return args -> {
+            userService.saveRole(new Role(null,"ROLE_USER"));
+            userService.saveRole(new Role(null,"ROLE_MODERATOR"));
 //            userService.saveRole(new Role(null, "ROLE_SENIOR_MODERATOR"));
-//            userService.saveRole(new Role(null,"ROLE_ADMIN"));
-//            userService.saveRole(new Role(null,"ROLE_SUPER_ADMIN"));
-//
-////            userService.saveUser(new Users(
-////                    null,
-////                    "username",
-////                    "FirstName",
-////                    "LastNam
-////                    "something@gmail.com",
-////                    "123456",
-////                    "contact",
-////                    Collections.EMPTY_SET,
-////                    Collections.EMPTY_LIST,
-////                    Collections.EMPTY_LIST
-////            ));
-//
-//
-//            userService.saveUser(new Users(new UserDto("username", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
-//            )));
-//            userService.saveUser(new Users(new UserDto("username1", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
-//            )));
-//
-////            userService.addRoleToUser("username","ROLE_USER");
-////            userService.addRoleToUser("username","ROLE_MODERATOR");
-//
-//        };
-//    }
+            userService.saveRole(new Role(null,"ROLE_ADMIN"));
+            userService.saveRole(new Role(null,"ROLE_SUPER_ADMIN"));
+
+//            userService.saveUser(new Users(
+//                    null,
+//                    "username",
+//                    "FirstName",
+//                    "LastNam
+//                    "something@gmail.com",
+//                    "123456",
+//                    "contact",
+//                    Collections.EMPTY_SET,
+//                    Collections.EMPTY_LIST,
+//                    Collections.EMPTY_LIST
+//            ));
+
+
+            userService.saveUser(new Users(new UserDto("aiden", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
+            )));
+            userService.saveUser(new Users(new UserDto("ben", "FirstName1", "LastName1", "something1@gmail.com", "123456", "contact1"
+            )));
+
+            userService.addRoleToUser("aiden","ROLE_USER");
+            userService.addRoleToUser("aiden","ROLE_ADMIN");
+            userService.addRoleToUser("aiden","ROLE_SUPER_ADMIN");
+            userService.addRoleToUser("bin","ROLE_MODERATOR");
+
+        };
+    }
 
 }
