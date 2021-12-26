@@ -5,8 +5,10 @@ services:
     image: mysql:latest
     container_name: mysql-db
     environment:
-      - MYSQL_ROOT_PASSWORD=letmein
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=springsecurity
+      - MYSQL_USER=aidenpearce
+      - MYSQL_PASSWORD=letmein
     ports:
       - "3306:3306"
 #    restart: unless-stopped
@@ -24,7 +26,8 @@ services:
     depends_on:
       - db
 
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/springsecurity
-#      SPRING_DATASOURCE_USERNAME: root
-#      SPRING_DATASOURCE_PASSWORD: letmein
+    environment:
+        - DATABASE_USER=aidenpearce
+        - DATABASE_PASSWORD=letmein
+        - DATABASE_NAME=springsecurity
+        - DATABASE_PORT=3306
